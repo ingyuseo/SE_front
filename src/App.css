@@ -188,7 +188,8 @@
   background-color: rgb(179, 233, 233);
 }
 .res_img{
-  /* width: 400px; */
+  height: 200px;
+  width: 400px; 
   object-fit: cover;
 }
 
