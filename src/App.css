@@ -1,38 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
 .App {
+  text-align: center;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  font-family:'Nanum Gothic';
+  font-weight: 1000;
+  margin-left:500px;
+}
+
+.main_form{
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100% - 120px);
+  margin-top: 10px;
+
+}
+
+.random_menu:hover, .find_category:hover, .find_mood:hover, .find_nearby:hover{
+  transform: scale(0.95);
+  transition-duration: 1s;
+}
+
+
+.random_menu{
+  width: 500px;
+  height: 63px;
+  line-height: 63px;
+  background-color: #ffd1e5;
+  box-sizing:border-box;
+  border-radius: 8px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: center;
+  display:flex;
+}
+
+.random_menu img{
+  padding-left: 30px;
+  width: 50px;
+}
+
+.random_menu span{
+  font-weight:1000;
+  padding-left: 50px;
+  font-size:25px;
+}
+
+.main_find{
+  display: flex;
+  margin-top: 10px;
+  font-weight: 1000;
+  overflow:hidden;
+}
+
+
+.main_find span{
+  border:none;
+  height: 40px;
+}
+
+.find_category{
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  height: 150px;
+  line-height: 63px;
+  background-color: lightgray;
+  border-radius: 8px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.find_category img{
+  margin-left: 20px;
+  width:140px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.find_mood{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  object-fit:cover;
+  margin-left:20px;
+  width: 240px;
+  height: 150px;
+  line-height: 63px;
+  background-color: lightgray;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.find_mood img{
+  margin-left: 20px;
+  margin-top: 10px;
+  width:120px;
+}
+.find_nearby{
+  display: flex;
+  margin-top: 20px;
+  width: 500px;
+  height: 63px;
+  line-height: 63px;
+  background-color: rgba(118, 216, 27, 0.795);
+  box-sizing:border-box;
+  border-radius: 8px;
+  border: none;
+  text-align: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.find_nearby img{
+  width:60px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.menu_wrapper{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 50px 50px 50px 50px 50px 50px 50px;
+  min-height: calc(100% - 120px);
+  height: 550px;
+  width:500px;
+  justify-content: center;
+  background-color: #FFEBF0;
+}
+
+.big_menu, .big_menu2{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  background-color: #f0e5e8;
+  border-radius: 6px;
+}
+
+.small_menu{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  background-color: #e4d4c3;
+  border-radius: 6px;
+}
+
+.big_menu img, .small_menu  img{
+  margin-left: 40px;
+  height: 20px;
+}
+
+.big_menu div, .small_menu div{
+  margin-left: 25px;
+  width: 100px;
+}
+
+
+.list_wrapper, .mood_wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: calc(100% - 120px);
+  height: 550px;
+  width:500px;
+  background-color: #FFEBF0;
+  overflow: scroll;
+}
+
+
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.restaurant{
+  margin-left: 40px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 8px;
+  border: 5px;
+  border-color: aqua;
+  margin-bottom: 5px;
+}
+
+.res_name{
+  padding-top: 10px;
+  margin-bottom: 15px;
+  height: 35px;
+  border-radius: 10px;
+  background-color: rgb(179, 233, 233);
+}
+.res_img{
+  /* width: 400px; */
+  object-fit: cover;
+}
+
+
+
+.mood_menu{
+  height: 25px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-start;
+  background-color: #e4d4c3;
+  border-radius: 6px;
+}
+
+.tag{
+  flex:1;
+  margin-left: 40px;
+}
+
+.mood_menu img{
+  margin-right: 60px;
+  width: 20px;
+}
+
+.res_map{
+  margin-top: 10px;
+}
+
+.review{
+  margin-top: 10px;
+  height: 30px;
+  background-color: rgb(228, 195, 215);
+  border-radius: 8px;
 }
