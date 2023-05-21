@@ -120,11 +120,13 @@ function MAIN(props) {
   return (
     <>
     <div className='main_form'>
+      <div className='main_find'>
         <div className='random_menu' onClick={() => {
               random_menu();
             }}>
           <img className="category_img" alt="cate_img" src="img/find_cate_img.png" />
           <span id='random'> 고민될때는? 메뉴 정해줘!</span>
+        </div>
         </div>
 
         <div className='main_find'>
