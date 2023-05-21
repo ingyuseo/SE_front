@@ -20,7 +20,7 @@ function App() {
   let content = null;
 
   if (mode === "MAIN") {
-    content = <MAIN setMode={setMode}></MAIN>;
+    content = <MAIN setMode={setMode} ></MAIN>;
   }
   else if(mode === "CATEGORY") {
     content = <CATEGORY setMode={setMode} setCate={setCate} setMood={setMood}></CATEGORY>;
@@ -55,8 +55,17 @@ function App() {
 export default App;
 
 function MAIN(props) {
+  const [data, setData] = useState([]);
   useEffect(() => {
-    const script = document.createElement("script");
+    fetch('http://127.0.0.1:8000/stores')
+    .then((res) => res.json())
+    .then(api_data => setData(api_data));
+  
+  }, []);
+
+  useEffect(() => {
+
+  const script = document.createElement("script");
     script.src = "//dapi.kakao.com/v2/maps/sdk.js?appkey=222fa53fe0708810cedfd8d617ac0d20&​libraries=services,clusterer,drawing";
     script.async = true;
     document.body.appendChild(script);
@@ -64,34 +73,49 @@ function MAIN(props) {
     const container = document.getElementById('map');
     const options = {
       center: new window.kakao.maps.LatLng(37.29713945326111, 126.971524553),
-      level: 4
+      level: 3
     };
     var map = new window.kakao.maps.Map(container, options);
 
-
     var geocoder = new window.kakao.maps.services.Geocoder();
-
-    geocoder.addressSearch('경기 수원시 장안구 서부로2105번길 26-3 1층', function(result, status) {
-
-      // 정상적으로 검색이 완료됐으면 
-       if (status === window.kakao.maps.services.Status.OK) {
-          var coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
-  
-          // 결과값으로 받은 위치를 마커로 표시합니다
-          var marker = new window.kakao.maps.Marker({
-              map: map,
-              position: coords
-          });
-          
-          marker.setMap(map);
-
-  
-          //map.setCenter(coords);
-      } 
-  });   
-
     
-  }, []);
+    for(let i=0;i<data.length; i++){
+      geocoder.addressSearch(data[i].address, function(result, status) {
+        if (status === window.kakao.maps.services.Status.OK) {
+            var coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
+    
+            // 결과값으로 받은 위치를 마커로 표시합니다
+            var marker = new window.kakao.maps.Marker({
+                map: map,
+                position: coords
+            });
+            
+            marker.setMap(map);
+            var iwContent = '<div style="padding:5px;">' + data[i].restaurant_name+'</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            iwRemoveable = false; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+            // 인포윈도우를 생성합니다
+            var infowindow = new window.kakao.maps.InfoWindow({
+                content : iwContent,
+                removable : iwRemoveable
+            });
+
+            window.kakao.maps.event.addListener(marker, 'mouseover', function() {
+              // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+                infowindow.open(map, marker);
+            });
+            
+            // 마커에 마우스아웃 이벤트를 등록합니다
+            window.kakao.maps.event.addListener(marker, 'mouseout', function() {
+                // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+                infowindow.close();
+            });
+        } 
+    });
+
+  
+  }   
+}, ); 
 
   return (
     <>
