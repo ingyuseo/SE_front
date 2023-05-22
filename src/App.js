@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Header from "./component/layout/header";
 import Footer from "./component/layout/footer";
 import {Login, Signin} from "./pages/login";
-import {SHOW_RES, SHOW_LIST, REVIEW} from "./pages/show"
+import {SHOW_RES, SHOW_LIST, REVIEW, REVIEW2} from "./pages/show"
 import { useNavigate } from 'react-router-dom';
 
 
@@ -12,10 +12,12 @@ function App() {
     setMode("MAIN");
     }, []);
 
-  const [mode, setMode] = useState("");
-  const [cate, setCate] = useState("");
-  const [mood, setMood] = useState("");
-  const [res_id, setResId] = useState("");
+    const [tag, setTag] = useState("");
+    const [mode, setMode] = useState("");
+    const [cate, setCate] = useState("");
+    const [mood, setMood] = useState("");
+    const [res_id, setResId] = useState("");
+    const [name, setName] = useState("");
 
   let content = null;
 
@@ -29,16 +31,32 @@ function App() {
     content = <MOOD setMode={setMode} setCate={setCate} setMood={setMood}></MOOD>;
   }
   else if(mode === "SHOW_LIST") {
-    content = <SHOW_LIST setMode={setMode} cate={cate} mood={mood} setResId={setResId}></SHOW_LIST>;
+    content = <SHOW_LIST setMode={setMode}
+    cate={cate}
+    mood={mood}
+    setResId={setResId}
+    setName={setName}
+    setTag={setTag}
+   ></SHOW_LIST>;
   }else if (mode === "LOGIN") {
     content = <Login setMode={setMode}></Login>;
   } else if (mode === "SIGNIN") {
     content = <Signin setMode={setMode}></Signin>;
   } else if (mode === "SHOW_RES") {
-    content = <SHOW_RES setMode={setMode} res_id={res_id}></SHOW_RES>;
+    content = <SHOW_RES 
+        setMode={setMode}
+        setTag={setTag}
+        setName={setName}
+        tag={tag}
+        res_id={res_id}
+        ></SHOW_RES>;
   } else if (mode === "REVIEW") {
-    content = <REVIEW setMode={setMode} res_id={res_id}></REVIEW>;
-  } 
+    content = (
+    <REVIEW setMode={setMode} tag={tag} name={name} res_id={res_id}></REVIEW>
+    );
+  } else if (mode === "REVIEW2") {
+    content = <REVIEW2 setMode={setMode} res_id={res_id}></REVIEW2>;
+  }
 
 
   return (

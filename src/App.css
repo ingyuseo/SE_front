@@ -227,3 +227,56 @@
   background-color: rgb(228, 195, 215);
   border-radius: 8px;
 }
+
+.review_btn_container {
+  display: flex;
+  margin-top: 10px;
+  overflow: hidden;
+  background-color: #ffebf0;
+}
+.review_container {
+  display: flex;
+  margin-top: 10px;
+  flex-direction: column;
+  overflow: hidden;
+  height: 500px;
+  width: 500px;
+  justify-content: center;
+  background-color: #ffebf0;
+}
+
+.review {
+  margin-top: 10px;
+  height: 30px;
+  background-color: rgb(228, 195, 215);
+  border-radius: 8px;
+}
+
+.btn_review {
+  margin-top: 10px;
+  height: 30px;
+  flex-basis: 50%;
+  background-color: rgb(228, 195, 215);
+  border-radius: 8px;
+}
+
+.btn_tag {
+  margin-top: 10px;
+  height: 30px;
+  border-radius: 8px;
+  background-color: rgb(228, 195, 215);
+}
+
+.non-click {
+  margin-top: 10px;
+  height: 30px;
+  border-radius: 8px;
+  background-color: rgb(228, 195, 215);
+}
+
+.click {
+  margin-top: 10px;
+  height: 30px;
+  border-radius: 8px;
+  background-color: rgb(126, 112, 218);
+}
